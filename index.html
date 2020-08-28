@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tourist Arrivals in Nepal 2009 - 2014</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  <style>
+  body {
+    position: relative; 
+  }
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">  
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#Gender">Gender</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#Age">Age</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#Purpose">Purpose</a>
+    </li>
+  
+  </ul>
+</nav>
+
+
+<div class="jumbotron text-center" style="margin-bottom:0;">
+  <h1 style="padding-top: 15px;"> 🇳🇵Tourist Arrivals in Nepal 🇳🇵</h1>
+  <p>The page presents the visualization of tourist arrivals in Nepal from 2009 - 2014  </p> 
+</div>
+
+
+
+<div class="container" style="margin-top:30px">
+  <div class="row">
+  
+    <div class="col-md-12">
+
+      
+  <p>Tourism is the <b>largest industry </b> in Nepal and its <b>largest source of foreign exchange and revenue.</b> Possessing eight of the ten highest mountains globally, Nepal is a hot spot destination for mountaineers, rock climbers, and people seeking adventure. The Hindu and Buddhist heritage of Nepal and its cold weather are also strong attractions.</p>
+    
+
+      <P > The tourist industry is seen as a way <b>to alleviate poverty and achieve more significant social equity.</b> Tourism brings $471 million a year to Nepal.</P>
+     
+     <p class="text-center"> To explore, Click any button below and hover over the graph for  more information.</p>
+   
+     <br>
+  </div>
+</div>
+
+
+
+
+<a href="#Gender"  button class="btn btn-info" align="center"  style="margin-left: 330px;" >Arrivals by Gender </</button></a>
+
+<a href="#Age"  button class="btn btn-info" align="center" style="margin-left: 10px;" >Arrivals by Age </button></a>
+
+ <a href="#Purpose"  button class="btn btn-info" align="center"  style="margin-right: 230px;">Arrivals by Purpose </button></a>
+
+
+<div id="Gender" class="container-fluid " style="padding-top:70px;padding-bottom:70px">
+<!--   <h1>Section 1</h1> -->
+  <canvas id="myChart" width="1000" height="450" ></canvas>
+<br>
+
+<p class="text-center"><b> Female tourists </b> were high in number for <b> 2011  </b>  while for <i> male 2013. </i> We see there is increasing in the number of tourists over the years.</p>
+
+</div>
+
+
+<div id="Age" class="container-fluid " style="padding-top:70px;padding-bottom:70px">
+
+  <canvas id='ageChart' width="1000" height="450" ></canvas>
+  <br>
+  <p class="text-center">The age group of <b> 31-45 were seen as the high number  </b> of tourist visiting Nepal.</p>
+</div>
+
+
+<div id="Purpose" class="container-fluid " style="padding-top:70px;padding-bottom:70px">
+<!--   <h1>Section 3</h1> -->
+  <canvas id='purposeChart' width="1000" height="450" ></canvas>
+  <br>
+  <p class="text-center">
+Major tourist activities include <b> wilderness and adventure activities </b>such as mountain biking, bungee jumping, etc., which are the central point for holiday pleasure.
+ </p>
+
+</div>
+
+
+<h2 class="text-center"><b>Takeaway</b></h2>
+
+<ul class="text-center">
+  Male tourists visit Nepal compare to females.<br>
+  The age group of 31-45 are seen higher in number.<br>
+ The number one purposes to visit Nepal is Holiday Purpose, followed by Trekking.
+
+</ul>
+
+<div class="container-fluid text-center " style="padding-bottom: 10px; font-size: 10px;">
+
+<b>Data Source:</b> <a href=" https://www.nepalgov.com/item/ministry-of-culture-tourism-and-civil-aviation-motca/" target="_blank"> Ministry of Culture, Tourism and Civil Aviation </a> | 
+
+<b>Obtained From:</b> <a href="https://opendatanepal.com/dataset/tourist-arrivals-by-sex-2003-2014" target="_blank"> Open Knowledge Nepal</a>  |
+
+<b>Design:</b> <a href="https://github.com/maladeep" target="_blank"> Mala Deep</a>
+
+</div> 
+</div>
+</div>
+
+
+<script type="text/javascript">
+ let myChart = document.getElementById('myChart').getContext('2d'); 
+ 
+//Global Options
+
+Chart.defaults.global.defaultfontFamily = 'Lato';
+Chart.defaults.global.defaultFontSize = 15;
+
+Chart.defaults.global.defaultFontColor = '#777';
+
+
+
+
+  let massPopChart =  new Chart(myChart,{
+    type: 'bar', // bar, horizontal, pie, line, donot, radar, polar area
+    data:{
+      labels:['2003',
+'2004',
+'2005',
+'2006',
+'2007',
+'2008',
+'2009',
+'2010',
+'2011',
+'2012',
+'2013',
+'2014'],
+
+datasets: [
+        {
+          label: "Female",
+          backgroundColor: "#3e95cd",
+          data: [133400,
+129994,
+117426,
+165108,
+236017,
+213294,
+221801,
+241256,
+384156,
+363822,
+348558,
+344491]
+        }, 
+
+        {
+          label: "Male",
+          backgroundColor: "#8e5ea2",
+          data: [204732,
+255303,
+257972,
+218818,
+290688,
+286983,
+288155,
+361611,
+352059,
+439270,
+449058,
+445627]
+    //     }           ],
+
+      //  borderWidth:1,
+      //  borderColor:'#777',
+      //  hoverBorderWidth:3,
+      //  hoverBorderColor:"black" 
+      }]
+    },
+    options:{
+
+      title:{
+        display:true,
+        text:"Tourist Arrivals by Gender",
+        fontSize: 25,
+
+      },
+      legend:{
+        display:true,
+        // position:'right',
+        labels:{
+          fontColor:'Black'
+        }
+      },
+
+    layout:{
+      padding:{
+        left:10,
+        right:10,
+        botton:0,
+        top:0
+      }
+    },
+
+    tooltips:{
+      enabled:true
+    },
+
+    scales:{
+      xAxes: [{
+        display: true,
+        gridLines:{
+          display:false
+        },
+        scaleLabel:{
+          display:true,
+          labelString:'Years'
+        }
+      }],
+      yAxes:[{
+        display: true,
+        gridLines:{
+          display:false
+        },
+        scaleLabel:{
+          display:true,
+          labelString:'No of Tourists'
+        }
+      }]
+    }
+    // } scale close
+    
+
+
+    }
+
+  })
+
+
+//Age chart
+
+
+let ageChart = document.getElementById('ageChart').getContext('2d');  
+ 
+//Global Options
+
+Chart.defaults.global.defaultfontFamily = 'Lato';
+Chart.defaults.global.defaultFontSize = 15;
+
+Chart.defaults.global.defaultFontColor = '#777';
+
+
+
+
+  let ageCharts =  new Chart(ageChart,{
+    type: 'bar', // bar, horizontal, pie, line, donot, radar, polar area
+    data:{
+      labels:['2003',
+'2004',
+'2005',
+'2006',
+'2007',
+'2008',
+'2009',
+'2010',
+'2011',
+'2012',
+'2013',
+'2014'],
+
+datasets: [
+        {
+          label: "16-30",
+          backgroundColor: "#AB274F",
+          data: [178357,
+84125,
+57115,
+75626,
+122879,
+106596,
+140805,
+120395,
+171081,
+181558,
+190630,
+185685]
+        }, 
+
+
+{
+          label: "31-45",
+          backgroundColor: "#8B4513",
+          data: [99740,
+128267,
+114103,
+123541,
+164488,
+150171,
+141955,
+189852,
+212176,
+231117,
+237690,
+235738]
+        }, 
+
+
+
+
+{
+          label: "46-60",
+          backgroundColor: " #708090",
+          data: [85753,
+96920,
+106077,
+95260,
+130756,
+121387,
+99197,
+172800,
+177983,
+201835,
+195416,
+183582]
+        }, 
+
+
+
+
+        {
+          label: "61 and over",
+          backgroundColor: "#FFA500",
+          data: [58226,
+37251,
+67674,
+52066,
+69927,
+60531,
+39638,
+64593,
+82726,
+109239,
+115654,
+106666]
+      }]
+    },
+    options:{
+
+      title:{
+        display:true,
+        text:"Tourist Arrivals  by Age Group",
+        fontSize: 25,
+
+      },
+      legend:{
+        display:true,
+        // position:'right',
+        labels:{
+          fontColor:'Black'
+        }
+      },
+
+    layout:{
+      padding:{
+        left:10,
+        right:10,
+        botton:0,
+        top:0
+      }
+    },
+
+    tooltips:{
+      enabled:true
+    },
+       scales:{
+      xAxes: [{
+        display: true,
+        gridLines:{
+          display:false
+        },
+        scaleLabel:{
+          display:true,
+          labelString:'Years'
+        }
+      }],
+      yAxes:[{
+        display: true,
+        gridLines:{
+          display:false
+        },
+        scaleLabel:{
+          display:true,
+          labelString:' Number of Tourists'
+        }
+      }]
+    }
+    // } scale close
+
+
+    }
+
+  })
+
+
+
+
+
+  //Purpose chart
+
+
+let purposeChart= document.getElementById('purposeChart').getContext('2d');  
+ 
+//Global Options
+
+Chart.defaults.global.defaultfontFamily = 'Lato';
+Chart.defaults.global.defaultFontSize = 15;
+
+Chart.defaults.global.defaultFontColor = '#777';
+
+
+
+
+  let purposeCharts =  new Chart(purposeChart,{
+    type: 'bar', // bar, horizontal, pie, line, donot, radar, polar area
+    data:{
+      labels:['Holiday Pleasure',
+'Trekking and Mountaineering',
+'Business',
+'Pilgrimage',
+'Official',
+'Convention/Conference',
+'Others'],
+      datasets:[{
+        label:'Population',
+        data:[
+        2954283,
+1063332,
+263375,
+768552,
+313878,
+88035,
+835260
+           ],
+           //backgroundColor:'grey'
+           backgroundColor:[
+           '#9400D3',
+           '#800000',
+           '#008080',
+           '#808000',
+           '#BC8F8F',
+
+           '#FF8C00',
+           '#008B8B'
+           ],
+
+        borderWidth:1,
+        borderColor:'#777',
+        hoverBorderWidth:3,
+        hoverBorderColor:"black" 
+      }]
+    },
+    options:{
+      responsive: true,
+
+      title:{
+        display:true,
+        text:"Tourist Arrivals by Purpose",
+        fontSize: 25,
+
+      },
+      legend:{
+        display:false,
+        // position:'right',
+        labels:{
+          fontColor:'Black'
+        }
+      },
+
+    layout:{
+      padding:{
+        left:10,
+        right:10,
+        botton:0,
+        top:0
+      }
+    },
+    tooltips:{
+      enabled:true
+      // mode:'label',
+    },
+    scales:{
+      xAxes: [{
+        display: true,
+        gridLines:{
+          display:false
+        },
+        scaleLabel:{
+          display:true,
+          labelString:'Purposes'
+        }
+      }],
+      yAxes:[{
+        display: true,
+        gridLines:{
+          display:false
+        },
+        scaleLabel:{
+          display:true,
+          labelString:' Number of Tourists'
+        }
+      }]
+    }
+    // } scale close
+
+
+
+    }
+
+  });
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
